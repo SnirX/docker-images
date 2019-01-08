@@ -7,7 +7,7 @@ ENV BASE_URL https://apache.osuosl.org/maven/maven-3/${MAVEN_VERSION}/binaries
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG "$USER_HOME_DIR/.m2"
 
-RUN apt-get update && apt-get install -y curl tar bash procps git python2.7 python-pip
+RUN apt-get update > /dev/null && apt-get install -y apt-transport-https dirmngr > /dev/null && echo 'deb https://apt.dockerproject.org/repo debian-stretch main' >> /etc/apt/sources.list && apt-key adv --no-tty --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys F76221572C52609D > /dev/null && apt-get update > /dev/null && apt-get install -y curl tar bash procps git python2.7 python-pip docker-engine > /dev/null
 
 RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
   && curl -fsSL -o /tmp/apache-maven.tar.gz ${BASE_URL}/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
