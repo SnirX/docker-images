@@ -1,6 +1,6 @@
 FROM docker:dind
 
-RUN apk add --no-cache curl tar bash procps npm git python2 py-pip
+RUN apk add --no-cache curl tar bash procps npm=10.14.2-r0 git python2 py-pip
 
 
 RUN pip install docker-compose && npm install -g typescript
